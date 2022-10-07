@@ -1,6 +1,14 @@
 // const bodyElement = document.querySelector('body');
 // const errorMessageTemplate = document.querySelector('#error').content;
 
+const errorMessageContainerElement = document.querySelector('.error-message-container');
+const menuHeaderContainerElement = document.querySelector('.menu-header-container');
+
+const showErrorMessage = () => {
+  errorMessageContainerElement.style.display = 'block';
+  menuHeaderContainerElement.style.display = 'none';
+};
+
 // const closeErrorMessage = () => {
 //   const errorMessage = document.querySelector('.error');
 //   errorMessage.remove();
@@ -31,4 +39,4 @@
 //   document.addEventListener('click', onErrorMessageClick);
 // };
 
-// export { showErrorMessage };
+export { showErrorMessage };

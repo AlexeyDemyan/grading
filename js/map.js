@@ -1,25 +1,46 @@
-// import { makePageActive } from './form.js';
 // import { renderOfferCard } from './get-offers.js';
 
-// const MAP_ELEMENT_ID = 'map-canvas';
+const libba = () => {
+  console.log('libba');
+}
 
-// const MAIN_PIN_ICON_DATA = {
-//   iconUrl: './img/main-pin.svg',
-//   iconWidth: 52,
-//   iconHeight: 52
-// };
+const MAP_ELEMENT_ID = 'map';
 
-// const EXTRA_PIN_ICON_DATA = {
-//   iconUrl: './img/pin.svg',
-//   iconWidth: 40,
-//   iconHeight: 40
-// };
+const MAIN_PIN_ICON_DATA = {
+  iconUrl: './img/pin.svg',
+  iconWidth: 52,
+  iconHeight: 52
+};
 
-// const INITIAL_MAP_POSITION = {
-//   lat: 35.66560,
-//   lng: 139.79112,
-//   scale: 10,
-// };
+const VERIFIED_PIN_ICON_DATA = {
+  iconUrl: './img/pin-verified.svg',
+  iconWidth: 52,
+  iconHeight: 52
+};
+
+const INITIAL_MAP_POSITION = {
+  lat: 59.92749,
+  lng: 30.31127,
+  scale: 10,
+};
+
+const createInteractiveMap = () => {
+  const map = L.map(MAP_ELEMENT_ID)
+    .on('load', libba)
+    .setView({
+      lat: INITIAL_MAP_POSITION.lat,
+      lng: INITIAL_MAP_POSITION.lng,
+    }, INITIAL_MAP_POSITION.scale);
+
+  L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
+  ).addTo(map);
+
+  return map;
+};
 
 // const INITIAL_MAIN_MARKER_POSITION = {
 //   lat: 35.66560,
@@ -103,3 +124,5 @@
 // };
 
 // export { createInteractiveMap, createPinIcon, createPinMarker, resetMainMarkerPosition, addMarkersToMap };
+
+export { createInteractiveMap }

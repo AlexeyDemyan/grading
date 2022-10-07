@@ -22,15 +22,14 @@ const getUserFiatBalance = (balances) => {
   }
 };
 
-const renderUserData = (userData) => {
+const renderMainUserData = (userData) => {
   userNameElement.textContent = userData.userName;
   userCryptoBalanceElement.textContent = getUserCryptoBalance(userData.balances);
   userFiatBalanceElement.textContent = getUserFiatBalance(userData.balances)
-  console.log(userData);
 };
 
 const hideUserData = () => {
   userProfileElement.style.display = 'none';
 };
 
-export { renderUserData, hideUserData };
+export { renderMainUserData , hideUserData };
