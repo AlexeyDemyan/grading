@@ -1,3 +1,5 @@
+import { createInteractiveMap, addMarkersToMap } from './map.js';
+
 const buyButton = document.querySelector('#button-buy');
 const sellButton = document.querySelector('#button-sell');
 const showMapButton = document.querySelector('#button-map');
@@ -29,11 +31,14 @@ const chooseToSellHandler = () => {
   })
 };
 
-const showMapHandler = () => {
+const showMapHandler = (elements) => {
   showMapButton.addEventListener('click', () => {
     makeListOrMapButtonActive(showMapButton);
     usersListElement.style.display = 'none';
     mapContainerElement.style.display = 'block';
+    const map = createInteractiveMap();
+    const markerGroup = L.layerGroup().addTo(map);
+    addMarkersToMap(elements, markerGroup);
   })
 };
 
