@@ -46,26 +46,26 @@ const populateCardNumber = (user) => {
     }
     else {
       user.paymentMethods.forEach((method) => {
-      if (method.provider === evt.target.value) {
-        cardNumberElement.value = method.accountNumber;
-      }
-    })
+        if (method.provider === evt.target.value) {
+          cardNumberElement.value = method.accountNumber;
+        }
+      });
     }
-  })
+  });
 };
 
 const validatePassword = () => {
   if (passwordInputElement.value !== CORRECT_PASSWORD) {
     passwordErrorMessageElement.textContent = 'Неверный пароль!';
   }
-  else return true;
+  else {return true;}
 };
 
 const populateMainUserPaymentMethods = (user) => {
   user.paymentMethods.forEach((method) => {
     const paymentMethodOptionElement = document.createElement('option');
     paymentMethodOptionElement.textContent = method.provider;
-    paymentMethodsElement.appendChild(paymentMethodOptionElement)
+    paymentMethodsElement.appendChild(paymentMethodOptionElement);
   });
 
   populateCardNumber(user);
@@ -81,27 +81,25 @@ const exchangeAll = (user) => {
         paymentInputElement.value = (user.balance.amount / user.exchangeRate);
         receivalInputElement.value = user.balance.amount;
       }
-      else receivalInputElement.value = (mainUserCryptoBalance * user.exchangeRate);
-
-      console.log(user.balance.amount);
-    })
-  })
+      else {receivalInputElement.value = (mainUserCryptoBalance * user.exchangeRate);}
+    });
+  });
 };
 
 const showErrorMessage = () => {
-  errorMessageElement.style.visibility = "visible";
+  errorMessageElement.style.visibility = 'visible';
 };
 
 const hideErrorMessage = () => {
-  errorMessageElement.style.visibility = "hidden";
+  errorMessageElement.style.visibility = 'hidden';
 };
 
 const showSuccessMessage = () => {
-  successMessageElement.style.visibility = "visible";
+  successMessageElement.style.visibility = 'visible';
 };
 
 const hideSuccessMessage = () => {
-  successMessageElement.style.visibility = "hidden";
+  successMessageElement.style.visibility = 'hidden';
 };
 
 const disableSubmitButton = () => {
@@ -147,7 +145,7 @@ const sellFormHandler = (user) => {
       sendData(
         () => {
           enableSubmitButton();
-          resetFormData();
+          resetSellFormData();
           showSuccessMessage();
           setTimeout(hideSuccessMessage, HIDE_MESSAGE_DELAY);
         },
@@ -162,4 +160,4 @@ const sellFormHandler = (user) => {
   });
 };
 
-export { sellFormHandler, populateMainUserPaymentMethods, resetSellFormData }
+export { sellFormHandler, populateMainUserPaymentMethods, resetSellFormData };

@@ -22,13 +22,13 @@ const makeListOrMapButtonActive = (button) => {
 const chooseToBuyHandler = () => {
   buyButton.addEventListener('click', () => {
     makeSellOrBuyButtonActive(buyButton);
-  })
+  });
 };
 
 const chooseToSellHandler = () => {
   sellButton.addEventListener('click', () => {
     makeSellOrBuyButtonActive(sellButton);
-  })
+  });
 };
 
 const showMapHandler = (elements) => {
@@ -39,7 +39,7 @@ const showMapHandler = (elements) => {
     const map = createInteractiveMap();
     const markerGroup = L.layerGroup().addTo(map);
     addMarkersToMap(elements, markerGroup);
-  })
+  });
 };
 
 const showListHandler = () => {
@@ -47,7 +47,7 @@ const showListHandler = () => {
     makeListOrMapButtonActive(showListButton);
     mapContainerElement.style.display = 'none';
     usersListElement.style.display = 'block';
-  })
+  });
 };
 
-export { chooseToSellHandler, chooseToBuyHandler, showMapHandler, showListHandler }
+export { chooseToSellHandler, chooseToBuyHandler, showMapHandler, showListHandler };

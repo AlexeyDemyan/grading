@@ -18,7 +18,7 @@ const renderPopup = (sellerData) => {
   const exchangeButton = popupCardElement.querySelector('.exchange-btn');
 
   userNameElement.textContent = sellerData.userName;
-  sellerCurrencyElement.textContent = sellerData.balance.currency
+  sellerCurrencyElement.textContent = sellerData.balance.currency;
   sellerExchangeRateElement.textContent = `${sellerData.exchangeRate} ₽`;
   sellerLimitElement.textContent = `${sellerData.minAmount}₽ - ${calculateMaxExchangeAmount(sellerData)}₽`;
 
@@ -29,12 +29,12 @@ const renderPopup = (sellerData) => {
       badgeElement.classList.add('badge');
       badgeElement.textContent = item.provider;
       badgesListElement.appendChild(badgeElement);
-    })
-  };
+    });
+  }
 
   if (sellerData.isVerified === false) {
     starBadge.style.visibility = 'hidden';
-  };
+  }
 
   exchangeButton.addEventListener('click', () => {
     openExchangeModal(sellerData);

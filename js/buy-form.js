@@ -42,8 +42,8 @@ const populatePaymentMethods = (user) => {
   user.paymentMethods.forEach((method) => {
     const paymentMethodOptionElement = document.createElement('option');
     paymentMethodOptionElement.textContent = method.provider;
-    paymentMethodsElement.appendChild(paymentMethodOptionElement)
-  })
+    paymentMethodsElement.appendChild(paymentMethodOptionElement);
+  });
 };
 
 const populateMainUserWalletNumber = () => {
@@ -57,19 +57,19 @@ const populateCardNumber = (user) => {
     }
     else {
       user.paymentMethods.forEach((method) => {
-      if (method.provider === evt.target.value) {
-        cardNumberElement.value = method.accountNumber;
-      }
-    })
+        if (method.provider === evt.target.value) {
+          cardNumberElement.value = method.accountNumber;
+        }
+      });
     }
-  })
+  });
 };
 
 const validatePassword = () => {
   if (passwordInputElement.value !== CORRECT_PASSWORD) {
     passwordErrorMessageElement.textContent = 'Неверный пароль!';
   }
-  else return true;
+  else {return true;}
 };
 
 const exchangeAll = (user) => {
@@ -81,26 +81,24 @@ const exchangeAll = (user) => {
       receivalInputElement.value = user.balance.amount;
       paymentInputElement.value = (receivalInputElement.value * user.exchangeRate);
     }
-    else receivalInputElement.value = (paymentInputElement.value / user.exchangeRate);
-
-    console.log(user.balance.amount);
-  })
+    else {receivalInputElement.value = (paymentInputElement.value / user.exchangeRate);}
+  });
 };
 
 const showErrorMessage = () => {
-  errorMessageElement.style.visibility = "visible";
+  errorMessageElement.style.visibility = 'visible';
 };
 
 const hideErrorMessage = () => {
-  errorMessageElement.style.visibility = "hidden";
+  errorMessageElement.style.visibility = 'hidden';
 };
 
 const showSuccessMessage = () => {
-  successMessageElement.style.visibility = "visible";
+  successMessageElement.style.visibility = 'visible';
 };
 
 const hideSuccessMessage = () => {
-  successMessageElement.style.visibility = "hidden";
+  successMessageElement.style.visibility = 'hidden';
 };
 
 const disableSubmitButton = () => {
@@ -169,4 +167,4 @@ const buyFormHandler = (user) => {
   });
 };
 
-export { buyFormHandler, resetBuyFormdata }
+export { buyFormHandler, resetBuyFormdata };

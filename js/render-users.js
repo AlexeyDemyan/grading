@@ -8,7 +8,7 @@ const userItemTemplate = document.querySelector('#user-table-row__template').con
 const renderUsers = (users) => {
   if (!users) {
     showSearchErrorMessage();
-  };
+  }
 
   const userFragment = document.createDocumentFragment();
 
@@ -29,12 +29,12 @@ const renderUsers = (users) => {
         badgeElement.classList.add('badge');
         badgeElement.textContent = item.provider;
         badgesListElement.appendChild(badgeElement);
-      })
-    };
+      });
+    }
 
     if (user.isVerified === false) {
       starBadge.style.visibility = 'hidden';
-    };
+    }
 
     exchangeButton.addEventListener('click', () => {
       openExchangeModal(user);

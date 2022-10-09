@@ -6,7 +6,7 @@ const userNameElement = userProfileNameElement.querySelector('#user-name');
 
 const getUserCryptoBalance = (balances) => {
   for (let i = 0; i <= balances.length; i++) {
-    if (balances[i].currency === "KEKS") {
+    if (balances[i].currency === 'KEKS') {
       return balances[i].amount;
     }
   }
@@ -14,7 +14,7 @@ const getUserCryptoBalance = (balances) => {
 
 const getUserFiatBalance = (balances) => {
   for (let i = 0; i <= balances.length; i++) {
-    if (balances[i].currency === "RUB") {
+    if (balances[i].currency === 'RUB') {
       return balances[i].amount;
     }
   }
@@ -24,7 +24,7 @@ const renderMainUserData = (userData) => {
   userCryptoBalanceElement['data-wallet-number'] = userData.wallet.address;
   userNameElement.textContent = userData.userName;
   userCryptoBalanceElement.textContent = getUserCryptoBalance(userData.balances);
-  userFiatBalanceElement.textContent = getUserFiatBalance(userData.balances)
+  userFiatBalanceElement.textContent = getUserFiatBalance(userData.balances);
 };
 
 const hideUserData = () => {

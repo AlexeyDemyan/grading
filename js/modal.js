@@ -31,18 +31,6 @@ function closeExchangeModal () {
   bodyElement.classList.remove('scroll-lock');
   document.removeEventListener('keydown', onModalEscKeydown);
 }
-
-// const resetForm = () => {
-//   sellerPaymentMethodsElement.textContent = '';
-//   const titleElement = document.createElement('option');
-//   titleElement.textContent = 'Выберите платёжную систему';
-//   titleElement.selected = true;
-//   titleElement.disabled = true;
-//   sellerPaymentMethodsElement.appendChild(titleElement);
-
-
-// };
-
 const modalsCloseButtonHandler = () => {
   modalBuyElementCloseButton.addEventListener('click', closeExchangeModal);
   modalSellElementCloseButton.addEventListener('click', closeExchangeModal);
@@ -57,7 +45,7 @@ const populateDataOnModal = (modal, user) => {
   starBadge.style.visibility = 'visible';
   if (user.isVerified === false) {
     starBadge.style.visibility = 'hidden';
-  };
+  }
 
   modalNameElement.textContent = user.userName;
   modalExchangeRateElement.textContent = `${user.exchangeRate} ₽`;
@@ -66,7 +54,6 @@ const populateDataOnModal = (modal, user) => {
 };
 
 const openExchangeModal = (user) => {
-  console.log(user);
   mapContainerElement.style.display = 'none';
   bodyElement.classList.add('scroll-lock');
 

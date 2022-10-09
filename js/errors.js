@@ -18,9 +18,9 @@ const removePasswordErrorMessageHandler = () => {
     element.addEventListener('input', () => {
       passwordErrorMessageElements.forEach((message) => {
         message.textContent = '';
-      })
-  })
-  })
+      });
+    });
+  });
 };
 
 export { showServerErrorMessage, showSearchErrorMessage, removePasswordErrorMessageHandler};

@@ -12,4 +12,4 @@ const calculateMaxExchangeAmount = (user) => {
 
 };
 
-export { calculateMaxExchangeAmount }
+export { calculateMaxExchangeAmount };

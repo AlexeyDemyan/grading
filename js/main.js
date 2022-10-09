@@ -23,14 +23,12 @@ getUserData(
   (data) => {
     renderMainUserData(data);
     populateMainUserPaymentMethods(data);
-    console.log(data)
   },
   () => {hideUserData();}
 );
 
 getContragentData(
   (data) => {
-    console.log(data);
     const filteredUsers = filterUsers(data, DEFAULT_FILTER_SETTINGS);
     renderUsers(filteredUsers);
     filterUsersHandler(data, renderUsers);

@@ -24,7 +24,7 @@ const createPinIcon = (pinIconData) => {
   const pinIcon = L.icon({
     iconUrl: pinIconData.iconUrl,
     iconSize: [pinIconData.iconWidth, pinIconData.iconHeight],
-    iconAnchor: [pinIconData.iconWidth/2, pinIconData.iconHeight]
+    iconAnchor: [pinIconData.iconWidth / 2, pinIconData.iconHeight]
   });
 
   return pinIcon;
@@ -80,4 +80,4 @@ const addMarkersToMap = (elements, markerGroup) => {
   });
 };
 
-export { createInteractiveMap, addMarkersToMap }
+export { createInteractiveMap, addMarkersToMap };
