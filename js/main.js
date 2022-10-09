@@ -17,7 +17,10 @@ chooseToBuyHandler();
 modalsCloseButtonHandler();
 
 getUserData(
-  (data) => {renderMainUserData(data)},
+  (data) => {
+    renderMainUserData(data);
+    console.log(data)
+  },
   () => {hideUserData();}
 );
 

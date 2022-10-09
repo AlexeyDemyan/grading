@@ -1,30 +1,5 @@
-// const renderFeatures = (features) => {
-//   const featuresFragment = document.createDocumentFragment();
-
-//   features.forEach((element) => {
-//     const featureElement = document.createElement('li');
-//     featureElement.classList.add('popup__feature');
-//     featureElement.classList.add(`popup__feature--${element}`);
-//     featuresFragment.appendChild(featureElement);
-//   });
-
-//   return featuresFragment;
-// };
-
-// const renderPhotos = (photos) => {
-//   const photosFragment = document.createDocumentFragment();
-
-//   photos.forEach((photo) => {
-//     const photoElement = cardPhotoTemplate.cloneNode(true);
-//     const photoImgElement = photoElement.querySelector('.popup__photo');
-//     photoImgElement.src = photo;
-//     photosFragment.appendChild(photoElement);
-//   });
-
-//   return photosFragment;
-// };
-
-import { openExchangeModal } from './modal.js'
+import { openExchangeModal } from './modal.js';
+import { calculateMaxExchangeAmount } from './util.js';
 
 const popupCardTemplate = document.querySelector('#map-baloon__template').content;
 
@@ -39,13 +14,13 @@ const renderPopup = (sellerData) => {
   const sellerExchangeRateElement = popupCardElement.querySelector('#seller-exchange-rate');
   const sellerLimitElement = popupCardElement.querySelector('#seller-limit');
   const badgesListElement = popupCardElement.querySelector('.user-card__badges-list');
-  const starBadge = popupCardElement.querySelector('#seller-star-badge');
+  const starBadge = popupCardElement.querySelector('.star-badge');
   const exchangeButton = popupCardElement.querySelector('.exchange-btn');
 
   userNameElement.textContent = sellerData.userName;
   sellerCurrencyElement.textContent = sellerData.balance.currency
   sellerExchangeRateElement.textContent = `${sellerData.exchangeRate} ₽`;
-  sellerLimitElement.textContent = `${sellerData.minAmount}₽ - ${sellerData.balance.amount}₽`;
+  sellerLimitElement.textContent = `${sellerData.minAmount}₽ - ${calculateMaxExchangeAmount(sellerData)}₽`;
 
   if (sellerData.paymentMethods) {
     sellerData.paymentMethods.forEach((item) => {
@@ -58,7 +33,7 @@ const renderPopup = (sellerData) => {
   };
 
   if (sellerData.isVerified === false) {
-    starBadge.remove();
+    starBadge.style.visibility = 'hidden';
   };
 
   exchangeButton.addEventListener('click', () => {

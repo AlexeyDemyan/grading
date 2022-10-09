@@ -23,6 +23,7 @@ const getUserFiatBalance = (balances) => {
 };
 
 const renderMainUserData = (userData) => {
+  userCryptoBalanceElement['data-wallet-number'] = userData.wallet.address;
   userNameElement.textContent = userData.userName;
   userCryptoBalanceElement.textContent = getUserCryptoBalance(userData.balances);
   userFiatBalanceElement.textContent = getUserFiatBalance(userData.balances)

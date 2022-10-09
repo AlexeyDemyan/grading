@@ -1,5 +1,6 @@
 import { showSearchErrorMessage } from './errors.js';
 import { openExchangeModal } from './modal.js';
+import { calculateMaxExchangeAmount } from './util.js';
 
 const listOfUsers = document.querySelector('.users-list__table-body');
 const userItemTemplate = document.querySelector('#user-table-row__template').content;
@@ -18,7 +19,7 @@ const renderUsers = (users) => {
     const exchangeRateElement = userElement.querySelector('.users-list__table-exchangerate');
     const cashLimitElement = userElement.querySelector('.users-list__table-cashlimit');
     const badgesListElement = userElement.querySelector('.users-list__badges-list');
-    const starBadge = userElement.querySelector('#star-badge');
+    const starBadge = userElement.querySelector('.star-badge');
     const exchangeButton = userElement.querySelector('.exchange-btn');
 
     if (user.paymentMethods) {
@@ -32,7 +33,7 @@ const renderUsers = (users) => {
     };
 
     if (user.isVerified === false) {
-      starBadge.remove();
+      starBadge.style.visibility = 'hidden';
     };
 
     exchangeButton.addEventListener('click', () => {
@@ -42,7 +43,7 @@ const renderUsers = (users) => {
     userNameElement.textContent = user.userName;
     currencyELement.textContent = user.balance.currency;
     exchangeRateElement.textContent = `${user.exchangeRate} ₽`;
-    cashLimitElement.textContent = `${user.minAmount}₽ - ${user.balance.amount}₽`;
+    cashLimitElement.textContent = `${user.minAmount}₽ - ${calculateMaxExchangeAmount(user)}₽`;
     userFragment.appendChild(userElement);
   });
 
