@@ -3,7 +3,9 @@ const sellButton = document.querySelector('#button-sell');
 const checkedUsersButton = document.querySelector('#checked-users');
 const listOfUsers = document.querySelector('.users-list__table-body');
 
-const filterByStatus = (users, status) => {users.filter((user) => user.status === status);};
+const filterByStatus = (users, status) => {
+  return users.filter((user) => user.status === status);
+};
 
 const filterByCheckedUsers = (users, checked) => {
   if (checked === true) {
