@@ -1,21 +1,17 @@
 import { renderPopup } from './render-popup.js';
 
-const libba = () => {
-  console.log('libba');
-}
-
 const MAP_ELEMENT_ID = 'map';
 
 const MAIN_PIN_ICON_DATA = {
   iconUrl: './img/pin.svg',
-  iconWidth: 52,
-  iconHeight: 52
+  iconWidth: 36,
+  iconHeight: 46
 };
 
 const VERIFIED_PIN_ICON_DATA = {
   iconUrl: './img/pin-verified.svg',
-  iconWidth: 52,
-  iconHeight: 52
+  iconWidth: 36,
+  iconHeight: 46
 };
 
 const INITIAL_MAP_POSITION = {
@@ -54,7 +50,6 @@ const verifiedPinIcon = createPinIcon(VERIFIED_PIN_ICON_DATA);
 
 const createInteractiveMap = () => {
   const map = L.map(MAP_ELEMENT_ID)
-    .on('load', libba)
     .setView({
       lat: INITIAL_MAP_POSITION.lat,
       lng: INITIAL_MAP_POSITION.lng,

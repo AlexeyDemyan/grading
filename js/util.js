@@ -1,7 +1,9 @@
+const CALCULATION_ACCURACY = 2;
+
 const calculateMaxExchangeAmount = (user) => {
 
   if (user.status === 'seller') {
-    return (user.balance.amount * user.exchangeRate).toFixed(2);
+    return (user.balance.amount * user.exchangeRate).toFixed(CALCULATION_ACCURACY);
   }
 
   else {

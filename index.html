@@ -299,17 +299,17 @@
             <div class="modal__content">
                 <h2 class="modal__description">Покупка криптовалюты</h2>
                 <!-- Не забудьте указать верный action-атрибут -->
-                <form class="modal-buy" method="post">
+                <form class="modal-buy" method="post" enctype="multipart/form-data" action="https://cryptostar.grading.pages.academy/" autocomplete="off">
                     <!--
                         Обратите внимание, что всем полям для отправки на сервер нужно указать
                         атрибуты name (их список вы найдёте в техзадании), а часть полей
                         вообще отправляется скрытыми
                     -->
                     <input type="hidden" name="type" value="BUY">
-                    <input type="hidden" name="contractorId">
-                    <input type="hidden" name="exchangeRate">
-                    <input type="hidden" name="sendingCurrency">
-                    <input type="hidden" name="receivingCurrency">
+                    <input type="hidden" name="contractorId" class="contractorId">
+                    <input type="hidden" name="exchangeRate" class="exchangeRate">
+                    <input type="hidden" name="sendingCurrency" value="RUB">
+                    <input type="hidden" name="receivingCurrency" value="KEKS">
 
                     <div class="transaction-info">
                         <p class="transaction-info__item transaction-info__item--name"><span
@@ -331,7 +331,7 @@
                                         class="custom-input__unit">₽</span>
                                     <button class="btn btn--textblue custom-input__btn exchange-all" type="button">обменять все
                                     </button>
-                                    <input id="payment-input" type="number" value="" placeholder="0" min="0" max="9999999999999999999999" data-pristine-min-message="Сумма слишком мала" data-pristine-max-message="Сумма превышает лимит">
+                                    <input name="sendingAmount" class="payment-input" type="number" value="" placeholder="0" min="0" max="9999999999999999999999" data-pristine-min-message="Сумма слишком мала" data-pristine-max-message="Сумма превышает лимит">
                                 </label>
                                 <!-- Пример стилизации ошибки валидации -->
                                 <!-- <div class="custom-input__error">Минимальная сумма — 9 999 999 ₽</div> -->
@@ -344,7 +344,7 @@
                             <div class="custom-input">
                                 <label><span class="custom-input__label">Зачисление</span><span
                                         class="custom-input__unit">KEKS</span>
-                                    <input id="receival-input" type="number" placeholder="0">
+                                    <input name="receivingAmount" class="receival-input" type="number" placeholder="0">
                                 </label>
                             </div>
                         </div>
@@ -357,7 +357,7 @@
                                     которые есть у пользователя. Способ - удалить из разметки или добавить disable-атрибут
                                     остаётся на ваше усмотрение. Первый пункт, с предложением выбора, должен быть всегда
                                 -->
-                                <select class="payment-methods">
+                                <select class="payment-methods" name="paymentMethod">
                                     <option selected disabled>Выберите платёжную систему</option>
                                 </select>
                             </div>
@@ -378,10 +378,11 @@
                             </div>
                         </div>
                         <div class="modal__input-wrapper modal__input-wrapper--decorated">
-                            <div class="custom-input">
+                            <div class="custom-input password-form-field">
                                 <label><span class="custom-input__label">Платёжный пароль</span>
-                                    <input type="password" value="123456" placeholder="Введите пароль" class="password" required data-pristine-required-message="Обязательное поле">
+                                    <input name="paymentPassword" type="password" value="123456" placeholder="Введите пароль" class="password" required data-pristine-required-message="Обязательное поле">
                                 </label>
+                                <div class="custom-input__error password-error-message"></div>
                             </div>
                         </div>
                         <button class="btn btn--green modal__submit" type="submit">Обменять
@@ -423,17 +424,17 @@
             <div class="modal__content">
                 <h2 class="modal__description">Продажа криптовалюты</h2>
                 <!-- Не забудьте указать верный action-атрибут -->
-                <form class="modal-sell" method="post">
+                <form class="modal-sell" method="post" enctype="multipart/form-data" action="https://cryptostar.grading.pages.academy/" autocomplete="off">
                     <!--
                         Обратите внимание, что всем полям для отправки на сервер нужно указать
                         атрибуты name (их список вы найдёте в техзадании), а часть полей
                         вообще отправляется скрытыми
                     -->
                     <input type="hidden" name="type" value="SELL">
-                    <input type="hidden" name="contractorId">
-                    <input type="hidden" name="exchangeRate">
-                    <input type="hidden" name="sendingCurrency">
-                    <input type="hidden" name="receivingCurrency">
+                    <input type="hidden" name="contractorId" class="contractorId">
+                    <input type="hidden" name="exchangeRate" class="exchangeRate">
+                    <input type="hidden" name="sendingCurrency" value="KEKS">
+                    <input type="hidden" name="receivingCurrency" value="RUB">
 
                     <div class="transaction-info">
                         <p class="transaction-info__item transaction-info__item--name">
@@ -461,11 +462,11 @@
                                 <label>
                                     <span class="custom-input__label">Оплата</span>
                                     <span class="custom-input__unit">KEKS</span>
-                                    <button class="btn btn--textblue custom-input__btn" type="button">обменять
+                                    <button class="btn btn--textblue custom-input__btn exchange-all" type="button">обменять
                                         все</button>
-                                    <input type="number" value="" placeholder="0">
+                                    <input name="sendingAmount" class="payment-input" type="number" value="" placeholder="0" min="0" max="9999999999999999999999" data-pristine-min-message="Сумма слишком мала" data-pristine-max-message="Сумма превышает лимит">
                                 </label>
-                                <div class="custom-input__error">Минимальная сумма — 9 999 999 ₽</div>
+                                <!-- <div class="custom-input__error">Минимальная сумма — 9 999 999 ₽</div> -->
                             </div>
                         </div>
                         <svg class="modal__container-svg" width="14" height="12" aria-hidden="true">
@@ -477,7 +478,7 @@
                                         class="custom-input__unit">₽</span>
                                     <button class="btn btn--textblue custom-input__btn exchange-all" type="button">обменять все
                                     </button>
-                                    <input type="number" value="" placeholder="0">
+                                    <input name="receivingAmount" class="receival-input" type="number" placeholder="0">
                                 </label>
                             </div>
                         </div>
@@ -486,7 +487,7 @@
                         <div class="modal__input-wrapper modal__input-wrapper--decorated">
                             <div class="custom-input">
                                 <label><span class="custom-input__label">Номер криптокошелька пользователя</span>
-                                    <input type="number" placeholder="08701943851-983457-2345" disabled>
+                                    <input type="text" placeholder="08701943851-983457-2345" class="wallet-number" disabled>
                                 </label>
                             </div>
                         </div>
@@ -497,12 +498,8 @@
                                     которые есть у пользователя. Способ - удалить из разметки или добавить disable-атрибут
                                     остаётся на ваше усмотрение. Первый пункт, с предложением выбора, должен быть всегда
                                 -->
-                                <select>
+                                <select class="payment-methods" name="paymentMethod">
                                     <option selected disabled>Выберите платёжную систему</option>
-                                    <option>CryptoEx</option>
-                                    <option>Первый криптобанк</option>
-                                    <option>BitTransfer</option>
-                                    <option>BMT Exchange</option>
                                 </select>
                             </div>
                         </div>
@@ -510,15 +507,16 @@
                             <div class="custom-input">
                                 <!-- В случае, если выбрана оплата наличными, поле нужно оставить пустым -->
                                 <label><span class="custom-input__label">Номер банковской карты пользователя</span>
-                                    <input type="number" placeholder="1234 5678 9012 3456" disabled>
+                                    <input type="text" placeholder="1234 5678 9012 3456" class="card-number" disabled>
                                 </label>
                             </div>
                         </div>
                         <div class="modal__input-wrapper modal__input-wrapper--decorated">
                             <div class="custom-input">
                                 <label><span class="custom-input__label">Платёжный пароль</span>
-                                    <input type="password" placeholder="Введите пароль" class="password" required data-pristine-required-message="Обязательное поле">
+                                    <input name="paymentPassword" type="password" value="123456" placeholder="Введите пароль" class="password" required data-pristine-required-message="Обязательное поле">
                                 </label>
+                                <div class="custom-input__error password-error-message"></div>
                             </div>
                         </div>
                         <button class="btn btn--green modal__submit" type="submit">Обменять
@@ -585,12 +583,12 @@
             или уникальные классы там, где их нет, а также сами обёрки (используйте <span>)
         -->
         <div class="user-card">
-            <span class="user-card__user-name">
+            <span class="user-card__user-name" style="width: 100%">
                 <!-- Обратите внимание, что "звёздочка только" у верифицированных пользователей -->
                 <svg width="20" height="20" aria-hidden="true">
                     <use class="star-badge" xlink:href="#icon-star"></use>
                 </svg>
-                <span id="seller-name">Неопознанный енот</span>
+                <span id="seller-name">Неопознанный енот</span><br>
             </span>
             <p class="user-card__cash-item"><span class="user-card__cash-label">Валюта</span><span
                     class="user-card__cash-data" id="seller-currency">KEKS</span></p>
@@ -599,9 +597,6 @@
             <p class="user-card__cash-item"><span class="user-card__cash-label">Лимит</span><span
                     class="user-card__cash-data" id="seller-limit">9 900 ₽ – 9 900 000 000 ₽</span></p>
             <ul class="user-card__badges-list">
-                <li class="user-card__badges-item badge">BitTransfer</li>
-                <li class="user-card__badges-item badge">CryptoEx</li>
-                <li class="user-card__badges-item badge">Первый криптобанк</li>
             </ul>
             <button class="btn btn--green user-card__change-btn exchange-btn" type="button">Обменять
             </button>

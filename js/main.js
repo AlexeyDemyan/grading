@@ -5,6 +5,8 @@ import { renderUsers } from './render-users.js';
 import { filterUsers, filterUsersHandler } from './filter-users.js';
 import { showServerErrorMessage } from './errors.js';
 import { modalsCloseButtonHandler } from './modal.js';
+import { populateMainUserPaymentMethods } from './sell-form.js';
+import { removePasswordErrorMessageHandler } from './errors.js';
 
 const DEFAULT_FILTER_SETTINGS = {
   status: 'seller',
@@ -15,10 +17,12 @@ showListHandler();
 chooseToSellHandler();
 chooseToBuyHandler();
 modalsCloseButtonHandler();
+removePasswordErrorMessageHandler();
 
 getUserData(
   (data) => {
     renderMainUserData(data);
+    populateMainUserPaymentMethods(data);
     console.log(data)
   },
   () => {hideUserData();}

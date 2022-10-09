@@ -1,6 +1,8 @@
 import { calculateMaxExchangeAmount } from './util.js';
 import { buyFormHandler } from './buy-form.js';
 import { sellFormHandler } from './sell-form.js';
+import { resetBuyFormdata } from './buy-form.js';
+import { resetSellFormData } from './sell-form.js';
 
 const modalBuyElement = document.querySelector('.modal--buy');
 const modalSellElement = document.querySelector('.modal--sell');
@@ -9,7 +11,7 @@ const bodyElement = document.querySelector('body');
 const modalOverlayElements = document.querySelectorAll('.modal__overlay');
 const modalBuyElementCloseButton = modalBuyElement.querySelector('#modal-buy-close-button');
 const modalSellElementCloseButton = modalSellElement.querySelector('#modal-sell-close-button');
-
+const showMapButton = document.querySelector('#button-map');
 
 function onModalEscKeydown (evt) {
   if (evt.key === 'Escape') {
@@ -19,12 +21,27 @@ function onModalEscKeydown (evt) {
 }
 
 function closeExchangeModal () {
+  resetBuyFormdata();
+  resetSellFormData();
   modalBuyElement.style.display = 'none';
   modalSellElement.style.display = 'none';
-  mapContainerElement.style.display = 'block';
+  if (showMapButton.classList.contains('is-active')) {
+    mapContainerElement.style.display = 'block';
+  }
   bodyElement.classList.remove('scroll-lock');
   document.removeEventListener('keydown', onModalEscKeydown);
 }
+
+// const resetForm = () => {
+//   sellerPaymentMethodsElement.textContent = '';
+//   const titleElement = document.createElement('option');
+//   titleElement.textContent = 'Выберите платёжную систему';
+//   titleElement.selected = true;
+//   titleElement.disabled = true;
+//   sellerPaymentMethodsElement.appendChild(titleElement);
+
+
+// };
 
 const modalsCloseButtonHandler = () => {
   modalBuyElementCloseButton.addEventListener('click', closeExchangeModal);

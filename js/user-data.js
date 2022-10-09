@@ -4,8 +4,6 @@ const userFiatBalanceElement = userProfileElement.querySelector('#user-fiat-bala
 const userProfileNameElement = userProfileElement.querySelector('.user-profile__name');
 const userNameElement = userProfileNameElement.querySelector('#user-name');
 
-// need to accrue for errors
-
 const getUserCryptoBalance = (balances) => {
   for (let i = 0; i <= balances.length; i++) {
     if (balances[i].currency === "KEKS") {
